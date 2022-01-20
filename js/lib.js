@@ -12,7 +12,7 @@ function initMoneyCommas() {
     	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
 			if (element.getAttribute('data-bind').includes("money") && !element.getAttribute('sd-money-listener')) {
 				console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
-    			element.addEventListener('change', function() { triggerMoneyCommas(this); }, false);
+    			element.addEventListener('focusout', function() { triggerMoneyCommas(this); }, false);
 				element.addEventListener('focus', function() { removeMoneyCommas(this); }, false);
 				element.setAttribute('sd-money-listener', 'yes');
     		}
@@ -51,7 +51,7 @@ function initEmailKSU() {
 	function registerEmailKSU() {
 		[].forEach.call(document.querySelectorAll('.maskemail'), function(element) {
 			if (!element.getAttribute('sd-email-listener')) {
-				element.addEventListener('change', function() { formatEmailKSU(this); }, false);
+				element.addEventListener('focusout', function() { formatEmailKSU(this); }, false);
 			}
 		});
 	}
