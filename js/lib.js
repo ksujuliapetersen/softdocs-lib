@@ -1,4 +1,5 @@
 // Dane Miller, 01/20/2022
+// Version 1.0.0
 // Host this .js file on GitHub.
 
 // Format money with commas (text field)
