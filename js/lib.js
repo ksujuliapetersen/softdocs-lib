@@ -1,9 +1,8 @@
+// Dane Miller, 01/20/2022
 // Host this .js file on GitHub.
 
-// To accomplish this you will need to use some custom JavaScript inside the' viewmodel.js' file of your form. 
-// Place the following inside the afterLoad() block.
-
 // Format money with commas (text field)
+// Run inside the afterLoad() block
 function initMoneyCommas() {
     function registerMoneyCommas() {
     	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
@@ -37,6 +36,7 @@ function initMoneyCommas() {
 }
 
 // Format email address as ___@ksu.edu (text field)
+// Run inside the afterLoad() block
 function initEmailKSU() {
 	function registerEmailKSU() {
 		[].forEach.call(document.querySelectorAll('.maskemail'), function(element) {
@@ -88,7 +88,8 @@ function uniqueObjArray(arr) {
 	return unique;
 }
 
-// Prevents form suggestion 
+// Prevents form suggestion
+// Run inside the afterLoad() block
 function disableAutocomplete() {
 	$( document ).on( 'focus', 'input', function(){ 
 		$( this ).attr( 'autocomplete', 'chrome-off' ); 
