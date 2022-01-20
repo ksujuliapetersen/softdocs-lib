@@ -70,7 +70,7 @@ function initEmailKSU() {
 
 /*** ARRAYS ***/
 
-// Return unique text array
+// Returns unique values from a text array
 function uniqueTxtArray(txtArray) {
 	function onlyUnique(value, index, self) {
 		return self.indexOf(value) === index;
@@ -79,7 +79,7 @@ function uniqueTxtArray(txtArray) {
 	return unique;
 }
 
-// Return unique object array
+// Returns unique objects from an object array
 // Also works for a text array
 function uniqueObjArray(arr) {
 	var a = [];
