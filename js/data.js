@@ -275,7 +275,7 @@ function getDepartments(college) {
 	let colleges = getColleges();
 	for (i = 0; i < colleges.length; i++) {
 		if (colleges[i].college == college) {
-			return colleges[i].department.toString();
+			return colleges[i].departments;
 		}
 	}
 	return [];
