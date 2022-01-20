@@ -13,6 +13,7 @@ function initMoneyCommas() {
 			if (element.getAttribute('data-bind').includes("money") && !element.getAttribute('sd-money-listener')) {
 				console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
     			element.addEventListener('change', function() { triggerMoneyCommas(this); }, false);
+				element.addEventListener('focus', function() { removeMoneyCommas(this); }, false);
 				element.setAttribute('sd-money-listener', 'yes');
     		}
     	});
@@ -30,6 +31,11 @@ function initMoneyCommas() {
     	var parts = val.toString().split(".");
     	parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     	elem.value = parts.join(".");
+    }
+	function removeMoneyCommas(elem) {
+    	var val = elem.value;
+    	val = val.toString().replace(",", "");
+    	elem.value = val;
     }
     [].forEach.call(document.querySelectorAll('button'), function(element) {
     	console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind') && !element.getAttribute('sd-money-listener'));
@@ -74,7 +80,7 @@ function initEmailKSU() {
 // Run inside the afterLoad() block
 function disableAutocomplete() {
 	$( document ).on( 'focus', 'input', function(){ 
-		$( this ).attr( 'autocomplete', 'chrome-off' ); 
+		$( this ).attr( 'autocomplete', 'chrome-off' );
 	});
 }
 
