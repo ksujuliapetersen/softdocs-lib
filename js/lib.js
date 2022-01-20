@@ -2,6 +2,9 @@
 // Version 1.0.0
 // Host this .js file on GitHub.
 
+
+/*** FORMATTING ***/
+
 // Format money with commas (text field)
 // Run inside the afterLoad() block
 function initMoneyCommas() {
@@ -64,6 +67,9 @@ function initEmailKSU() {
 	registerEmailKSU();
 }
 
+
+/*** ARRAYS ***/
+
 // Return unique text array
 function uniqueTxtArray(txtArray) {
 	function onlyUnique(value, index, self) {
@@ -88,6 +94,9 @@ function uniqueObjArray(arr) {
 	}
 	return unique;
 }
+
+
+/*** FORM PAGE ***/
 
 // Prevents form suggestion
 // Run inside the afterLoad() block
