@@ -122,7 +122,7 @@ function uniqueObjArray(arr) {
 }
 
 
-/*** DATA TABLES ***/
+/*** DATA TABLES: COLLEGE/DEPARTMENT ***/
 
 function getCollegeDepartmentPairs() {
 	return [
