@@ -3,7 +3,7 @@
 // Host this .js file on GitHub.
 
 
-/*** INPUT FORMAT ***/
+/*** INPUT FORMATTING ***/
 
 // Format money with commas (text field)
 // Run inside the afterLoad() block
@@ -94,7 +94,7 @@ function showFormLoadingMessage(boolEnable) {
 }
 
 
-/*** ARRAYS ***/
+/*** ARRAY FUNCTIONS ***/
 
 // Returns unique values from a text array
 function uniqueTxtArray(txtArray) {
