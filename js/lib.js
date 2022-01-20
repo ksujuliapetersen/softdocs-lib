@@ -3,7 +3,7 @@
 // Host this .js file on GitHub.
 
 
-/*** FORMATTING ***/
+/*** INPUT FORMAT ***/
 
 // Format money with commas (text field)
 // Run inside the afterLoad() block
@@ -68,6 +68,32 @@ function initEmailKSU() {
 }
 
 
+/*** FORM OPTIONS ***/
+
+// Prevents form suggestion
+// Run inside the afterLoad() block
+function disableAutocomplete() {
+	$( document ).on( 'focus', 'input', function(){ 
+		$( this ).attr( 'autocomplete', 'chrome-off' ); 
+	});
+}
+
+// Shows a loading message that will disappear when the default values finish loading.
+// Run showFormLoadingMessage(true); in vm.viewmodel() to show the message.
+// Run showFormLoadingMessage(false); at the end of vm.setDefaults() to hide the message after the page has finished loading.
+function showFormLoadingMessage(boolEnable) {
+	if (boolEnable == true) {
+		if (document.getElementById("softdocsLoadingBar")) {
+		   $( '#softdocsLoadingBar' ).css('display', '');
+		} else {
+			$( 'body' ).prepend('<div id="softdocsLoadingBar" style="display: block; position: fixed; width: 50%; text-align: center; margin: 25% 25% 25% 25%; background: white; z-index: 999; font-size: 26px; font-weight: bold; padding: 20px; border: 4px solid black;">Loading form, please wait...</div>');
+		}
+	} else {
+		$( '#softdocsLoadingBar' ).css('display', 'none');
+	}
+}
+
+
 /*** ARRAYS ***/
 
 // Returns unique values from a text array
@@ -93,30 +119,4 @@ function uniqueObjArray(arr) {
 		}
 	}
 	return unique;
-}
-
-
-/*** FORM PAGE ***/
-
-// Prevents form suggestion
-// Run inside the afterLoad() block
-function disableAutocomplete() {
-	$( document ).on( 'focus', 'input', function(){ 
-		$( this ).attr( 'autocomplete', 'chrome-off' ); 
-	});
-}
-
-// Shows a loading message that will disappear when the default values finish loading.
-// Run showFormLoadingMessage(true); in vm.viewmodel().
-// Run showFormLoadingMessage(false); at the end of vm.setDefaults().
-function showFormLoadingMessage(boolEnable) {
-	if (boolEnable == true) {
-		if (document.getElementById("softdocsLoadingBar")) {
-		   $( '#softdocsLoadingBar' ).css('display', '');
-		} else {
-			$( 'body' ).prepend('<div id="softdocsLoadingBar" style="display: block; position: fixed; width: 50%; text-align: center; margin: 25% 25% 25% 25%; background: white; z-index: 999; font-size: 26px; font-weight: bold; padding: 20px; border: 4px solid black;">Loading form, please wait...</div>');
-		}
-	} else {
-		$( '#softdocsLoadingBar' ).css('display', 'none');
-	}
 }
