@@ -1,9 +1,10 @@
 # softdocs-lib
 Softdocs Javascript Functions Library
 
-To add this function library to your form, use the form editor menu:
+To add this function library to your form, add the following line to the "define" array at the beginning of your viewmodel.js file
 
-###### Form Options > Add items between your head tags
 ```
-<script type="application/javascript" src="https://kstateome.github.io/softdocs-lib/js/lib.js"></script>
+'https://kstateome.github.io/softdocs-lib/js/lib.js',
 ```
+
+![viewmodel](https://kstateome.github.io/softdocs-lib/img/viewmodel.png)
