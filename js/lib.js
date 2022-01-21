@@ -84,7 +84,7 @@ function initEmailKSU() {
 
 /*** LOADING MESSAGE ***/
 
-// Shows a loading message
+// Shows a loading message immediately as the form begins to load
 // Run inside the vm.viewmodel() block
 function showFormLoadingMessage() {
 	if ($( '#softdocsFormLoadingMessage' ).length == 0) {
@@ -92,7 +92,7 @@ function showFormLoadingMessage() {
 	}
 }
 
-// Hides the loading message
+// Hides the loading message after the form has finished loading
 // Run inside the vm.afterLoad() block
 function hideFormLoadingMessage() {
 	if ($( '#softdocsFormLoadingMessage' ).length > 0) {

@@ -45,13 +45,13 @@ initEmailKSU();
 Shows a loading message immediately as the form begins to load.
 > Run in the vm.viewmodel() block
 ```
-showFormLoadingMessage(true);
+showFormLoadingMessage();
 ```
 
 Hides the loading message after the form has finished loading.
 > Run in the vm.afterLoad() block
 ```
-showFormLoadingMessage(false);
+hideFormLoadingMessage();
 ```
 
 ### ARRAY FUNCTIONS
