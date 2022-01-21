@@ -34,7 +34,7 @@ function initMoneyCommas() {
     }
 	function removeMoneyCommas(elem) {
     	var val = elem.value;
-    	val = val.toString().replace(/,/gi, "");
+    	val = val.toString().replace(/,/g, "");
     	elem.value = val;
     }
     [].forEach.call(document.querySelectorAll('button'), function(element) {
