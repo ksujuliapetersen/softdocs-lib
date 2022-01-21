@@ -24,13 +24,13 @@ An alternative option is to use the form editor menu:
 ### INPUT FORMATTING
 
 Formats money with commas (text field)
-> Run inside the afterLoad() block
+> Run inside the vm.afterLoad() block
 ```
 initMoneyCommas();
 ```
 
 Formats email address as eid@ksu.edu (text field)
-> Run inside the afterLoad() block
+> Run inside the vm.afterLoad() block
 ```
 initEmailKSU();
 ```
