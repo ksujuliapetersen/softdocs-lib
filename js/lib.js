@@ -77,7 +77,7 @@ function initEmailKSU() {
 /*** FORM OPTIONS ***/
 
 // Prevents form suggestion
-// Run inside the afterLoad() block
+// Run inside the vm.afterLoad() block
 function disableAutocomplete() {
 	$( document ).on( 'focus', 'input', function(){ 
 		$( this ).attr( 'autocomplete', 'chrome-off' );
@@ -85,8 +85,8 @@ function disableAutocomplete() {
 }
 
 // Shows a loading message that will disappear when the default values finish loading.
-// Run showFormLoadingMessage(true); in vm.viewmodel() to show the message.
-// Run showFormLoadingMessage(false); at the end of vm.setDefaults() to hide the message after the page has finished loading.
+// Run showFormLoadingMessage(true); in the vm.viewmodel() block to show the message immediately as the form begins to load.
+// Run showFormLoadingMessage(false); in the vm.afterLoad() block to hide the message after the form has finished loading.
 function showFormLoadingMessage(boolEnable) {
 	if (boolEnable == true) {
 		if ($( '#softdocsFormLoadingMessage' ).length == 0) {
