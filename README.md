@@ -20,28 +20,27 @@ An alternative option is to use the form editor menu:
 
 ## Code
 
+### FORM OPTIONS
 
-### INPUT FORMATTING
-
-Formats money with commas (text field)
+Formats money fields (text) to use commas
 > Run inside the vm.afterLoad() block
 ```
 initMoneyCommas();
 ```
 
-Formats email address as eid@ksu.edu (text field)
+Formats email address fields (text) marked with a "maskemail" class as eid@ksu.edu
 > Run inside the vm.afterLoad() block
 ```
 initEmailKSU();
 ```
-
-### FORM OPTIONS
 
 Prevents form suggestion
 > Run inside the vm.afterLoad() block
 ```
 disableAutocomplete();
 ```
+
+### LOADING MESSAGE
 
 Shows a loading message immediately as the form begins to load.
 > Run in the vm.viewmodel() block
