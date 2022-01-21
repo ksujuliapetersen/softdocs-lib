@@ -5,7 +5,7 @@
 
 /*** INPUT FORMATTING ***/
 
-// Format money with commas (text field)
+// Formats money with commas (text field)
 // Run inside the afterLoad() block
 function initMoneyCommas() {
     function registerMoneyCommas() {
@@ -45,7 +45,7 @@ function initMoneyCommas() {
     registerMoneyCommas();
 }
 
-// Format email address as ___@ksu.edu (text field)
+// Formats email address as ___@ksu.edu (text field)
 // Run inside the afterLoad() block
 function initEmailKSU() {
 	function registerEmailKSU() {
