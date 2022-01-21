@@ -6,7 +6,7 @@
 /*** INPUT FORMATTING ***/
 
 // Formats money with commas (text field)
-// Run inside the afterLoad() block
+// Run inside the vm.afterLoad() block
 function initMoneyCommas() {
     function registerMoneyCommas() {
     	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
@@ -46,7 +46,7 @@ function initMoneyCommas() {
 }
 
 // Formats email address as ___@ksu.edu (text field)
-// Run inside the afterLoad() block
+// Run inside the vm.afterLoad() block
 function initEmailKSU() {
 	function registerEmailKSU() {
 		[].forEach.call(document.querySelectorAll('.maskemail'), function(element) {
