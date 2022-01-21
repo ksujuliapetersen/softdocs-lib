@@ -1,9 +1,17 @@
 // Dane Miller, 01/21/2022
-// Version 1.0.1
+// Version 1.0.2
 // Host this .js file on GitHub.
 
 
-/*** INPUT FORMATTING ***/
+/*** FORM OPTIONS ***/
+
+// Prevents form suggestion
+// Run inside the vm.afterLoad() block
+function disableAutocomplete() {
+	$( document ).on( 'focus', 'input', function(){ 
+		$( this ).attr( 'autocomplete', 'chrome-off' );
+	});
+}
 
 // Formats money with commas (text field)
 // Run inside the vm.afterLoad() block
@@ -74,25 +82,20 @@ function initEmailKSU() {
 }
 
 
-/*** FORM OPTIONS ***/
+/*** LOADING MESSAGE ***/
 
-// Prevents form suggestion
-// Run inside the vm.afterLoad() block
-function disableAutocomplete() {
-	$( document ).on( 'focus', 'input', function(){ 
-		$( this ).attr( 'autocomplete', 'chrome-off' );
-	});
+// Shows a loading message
+// Run inside the vm.viewmodel() block
+function showFormLoadingMessage() {
+	if ($( '#softdocsFormLoadingMessage' ).length == 0) {
+		$( 'body' ).prepend('<div id="softdocsFormLoadingMessage" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 999;"><div style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: white; opacity: 0.8;"></div><div style="display: block; position: fixed; width: 80%; height: 220px; text-align: center; margin: 10%; font-size: 26px; font-weight: bold; padding: 20px; background: white; box-shadow: 0 0 30px grey;"><div>Loading...</div><div style="width: 100px; margin: 10px 0 0 calc(50% - 50px);"><object type="image/svg+xml" data="/dist/resources/images/svg/Loading.svg">...</object></div></div></div>');
+	}
 }
 
-// Shows a loading message that will disappear when the default values finish loading.
-// Run showFormLoadingMessage(true); in the vm.viewmodel() block to show the message immediately as the form begins to load.
-// Run showFormLoadingMessage(false); in the vm.afterLoad() block to hide the message after the form has finished loading.
-function showFormLoadingMessage(boolEnable) {
-	if (boolEnable == true) {
-		if ($( '#softdocsFormLoadingMessage' ).length == 0) {
-			$( 'body' ).prepend('<div id="softdocsFormLoadingMessage" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 999;"><div style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: white; opacity: 0.8;"></div><div style="display: block; position: fixed; width: 80%; height: 220px; text-align: center; margin: 10%; font-size: 26px; font-weight: bold; padding: 20px; background: white; box-shadow: 0 0 30px grey;"><div>Loading...</div><div style="width: 100px; margin: 10px 0 0 calc(50% - 50px);"><object type="image/svg+xml" data="/dist/resources/images/svg/Loading.svg">...</object></div></div></div>');
-		}
-	} else if ($( '#softdocsFormLoadingMessage' ).length > 0) {
+// Hides the loading message
+// Run inside the vm.afterLoad() block
+function hideFormLoadingMessage() {
+	if ($( '#softdocsFormLoadingMessage' ).length > 0) {
 		$( '#softdocsFormLoadingMessage' ).remove();
 	}
 }

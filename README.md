@@ -22,6 +22,12 @@ An alternative option is to use the form editor menu:
 
 ### FORM OPTIONS
 
+Prevents form suggestion
+> Run inside the vm.afterLoad() block
+```
+disableAutocomplete();
+```
+
 Formats money fields (text) to use commas
 > Run inside the vm.afterLoad() block
 ```
@@ -32,12 +38,6 @@ Formats email address fields (text) marked with a "maskemail" class as eid@ksu.e
 > Run inside the vm.afterLoad() block
 ```
 initEmailKSU();
-```
-
-Prevents form suggestion
-> Run inside the vm.afterLoad() block
-```
-disableAutocomplete();
 ```
 
 ### LOADING MESSAGE
