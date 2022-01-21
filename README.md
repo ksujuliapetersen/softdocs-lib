@@ -3,7 +3,7 @@ Softdocs Javascript Functions Library
 
 To add this function library to your form, use the form editor menu:
 
-###### Form Options > Add items between your head tags.
+###### Form Options > Add items between your head tags
 ```
 <script src="https://kstateome.github.io/softdocs-lib/js/lib.js"></script>
 ```
