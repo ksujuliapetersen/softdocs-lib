@@ -12,6 +12,7 @@
 // Run inside the vm.afterLoad() block
 // i.e.: ksu.format(['noautocomplete', 'moneycommas', 'emailksu', 'hidedisabledbuttons']);
 ksu.format = function(p) {
+	if (p === undefined) { p = []; }
 	for (var i = 0; i < p.length; i++) { p[i] = p[i].toLowerCase(); }
 	if (p.includes("noautocomplete") == true) { ksu.disableAutocomplete(); }
 	if (p.includes("moneycommas") == true) { ksu.initMoneyCommas(); }
