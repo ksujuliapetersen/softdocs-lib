@@ -53,7 +53,7 @@ ksu.initMoneyCommas = function() {
     	element.addEventListener('click', function() { ksu.registerMoneyCommas(); }, false);
 		element.setAttribute('sd-money-listener', 'yes');
     });
-    this.registerMoneyCommas();
+    ksu.registerMoneyCommas();
 };
 
 // Formats email address as ___@ksu.edu (text field)
@@ -62,7 +62,7 @@ ksu.initEmailKSU = function() {
 	ksu.registerEmailKSU = function() {
 		[].forEach.call(document.querySelectorAll('.maskemail'), function(element) {
 			if (!element.getAttribute('sd-email-listener')) {
-				element.addEventListener('focusout', function() { formatEmailKSU(this); }, false);
+				element.addEventListener('focusout', function() { ksu.formatEmailKSU(this); }, false);
 			}
 		});
 	};
@@ -74,15 +74,14 @@ ksu.initEmailKSU = function() {
 			elem.value = parts[0] + "@ksu.edu";
 		}
 	};
-
 	[].forEach.call(document.querySelectorAll('button'), function(element) {
 		if (!element.getAttribute('sd-email-listener')) {
 			console.log('initEmailKSU: ' + element.getAttribute('id'));
-			element.addEventListener('click', function() { registerEmailKSU(); }, false);
+			element.addEventListener('click', function() { ksu.registerEmailKSU(); }, false);
 			element.setAttribute('sd-email-listener', 'yes');
 		}
 	});
-	this.registerEmailKSU();
+	ksu.registerEmailKSU();
 };
 
 // Buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
