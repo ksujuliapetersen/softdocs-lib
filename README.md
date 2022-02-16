@@ -18,7 +18,15 @@ An alternative option is to use the form editor menu:
 <script src="https://kstateome.github.io/softdocs-lib/1.1.0/lib.js"></script>
 ```
 
-## Code
+## Code - Simple Config Option
+
+Use the selected formatting options on the form
+> Run inside the vm.afterLoad() block
+```
+ksu.format(['noautocomplete', 'moneycommas', 'emailksu', 'hidedisabledbuttons']);
+```
+
+## Code - Individual Functions
 
 ### FORM OPTIONS
 
