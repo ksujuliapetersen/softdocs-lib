@@ -9,42 +9,23 @@ To add this function library to your form, add the following line to the "define
 
 ![viewmodel](https://kstateome.github.io/softdocs-lib/img/viewmodel.png)
 
-### Alternative Method
-
-An alternative option is to use the form editor menu:
-
-> Form Options > Add items between your head tags
-```
-<script src="https://kstateome.github.io/softdocs-lib/1.1.0/lib.js"></script>
-```
-
 ## Code
 
-### FORM OPTIONS
+### FORMATTING OPTIONS
 
-Prevents form suggestion
+Use the selected formatting options on the form
 > Run inside the vm.afterLoad() block
 ```
-ksu.disableAutocomplete();
+ksu.format(['noautocomplete', 'moneycommas', 'emailksu', 'hidedisabledbuttons']);
 ```
 
-Formats money fields (text) to use commas
-> Run inside the vm.afterLoad() block
-```
-ksu.initMoneyCommas();
-```
+**noautocomplete** prevents form suggestion
 
-Formats email address fields (text) marked with a "maskemail" class as eid@ksu.edu
-> Run inside the vm.afterLoad() block
-```
-ksu.initEmailKSU();
-```
+**moneycommas** formats money fields (text) to use commas
 
-Buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
-> Run inside the vm.afterLoad() block
-```
-ksu.initDisabledButtonsAreHidden();
-```
+**emailksu** formats email address fields (text) marked with a "maskemail" class as eid@ksu.edu
+
+**hidedisabledbuttons** buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
 
 ### LOADING MESSAGE
 
