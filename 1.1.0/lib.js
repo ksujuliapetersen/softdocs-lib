@@ -1,5 +1,5 @@
 // Dane Miller, 02/16/2022
-// Version 1.0.0
+// Version 1.1.0
 // Host this .js file on GitHub.
 
 (function(ksu) {
