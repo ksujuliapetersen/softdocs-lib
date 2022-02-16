@@ -40,6 +40,12 @@ Formats email address fields (text) marked with a "maskemail" class as eid@ksu.e
 ksu.initEmailKSU();
 ```
 
+Buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
+> Run inside the vm.afterLoad() block
+```
+ksu.initDisabledButtonsAreHidden();
+```
+
 ### LOADING MESSAGE
 
 Shows a loading message immediately as the form begins to load.
