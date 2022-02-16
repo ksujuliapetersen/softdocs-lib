@@ -43,7 +43,7 @@ ksu.initEmailKSU();
 Buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
 > Run inside the vm.afterLoad() block
 ```
-ksu.initDisabledButtonsAreHidden();
+ksu.initHideDisabledButtons();
 ```
 
 ### LOADING MESSAGE
