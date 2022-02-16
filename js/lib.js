@@ -81,6 +81,12 @@ function initEmailKSU() {
 	registerEmailKSU();
 }
 
+// Buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
+// Run inside the vm.afterLoad() block
+function initDisabledButtonsAreHidden() {
+	$( 'body' ).prepend('<style>button:disabled { display: none; }</style>');
+}
+
 
 /*** LOADING MESSAGE ***/
 
