@@ -19,6 +19,35 @@ ksu.disableAutocomplete = function() {
 // Formats money with commas (text field)
 // Run inside the vm.afterLoad() block
 ksu.initMoneyCommas = function() {
+	ksu.registerMoneyCommas = function() {
+		[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
+			if (element.getAttribute('data-bind').includes("money") && !element.getAttribute('sd-money-listener')) {
+				console.log('registerMoneyCommas: ' + element.getAttribute('id'));
+				element.addEventListener('focusout', function() { ksu.triggerMoneyCommas(this); }, false);
+				element.addEventListener('focus', function() { ksu.removeMoneyCommas(this); }, false);
+				element.setAttribute('sd-money-listener', 'yes');
+			}
+		});
+	};
+	ksu.triggerMoneyCommas = function(elem) {
+		this.formatMoneyCommas(elem);
+		[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
+			if (element.getAttribute('data-bind').includes("money") && element.getAttribute('data-bind').includes("calculate")) {
+				ksu.formatMoneyCommas(element);
+			}
+		});
+	};
+	ksu.formatMoneyCommas = function(elem) {
+		var val = elem.value;
+		var parts = val.toString().split(".");
+		parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		elem.value = parts.join(".");
+	};
+	ksu.removeMoneyCommas = function(elem) {
+		var val = elem.value;
+		val = val.toString().replace(/,/g, "");
+		elem.value = val;
+	};
     [].forEach.call(document.querySelectorAll('button'), function(element) {
 		console.log('initMoneyCommas: ' + element.getAttribute('id'));
     	element.addEventListener('click', function() { ksu.registerMoneyCommas(); }, false);
@@ -26,39 +55,26 @@ ksu.initMoneyCommas = function() {
     });
     this.registerMoneyCommas();
 };
-ksu.registerMoneyCommas = function() {
-	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
-		if (element.getAttribute('data-bind').includes("money") && !element.getAttribute('sd-money-listener')) {
-			console.log('registerMoneyCommas: ' + element.getAttribute('id'));
-			element.addEventListener('focusout', function() { ksu.triggerMoneyCommas(this); }, false);
-			element.addEventListener('focus', function() { ksu.removeMoneyCommas(this); }, false);
-			element.setAttribute('sd-money-listener', 'yes');
-		}
-	});
-};
-ksu.triggerMoneyCommas = function(elem) {
-	this.formatMoneyCommas(elem);
-	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
-		if (element.getAttribute('data-bind').includes("money") && element.getAttribute('data-bind').includes("calculate")) {
-			ksu.formatMoneyCommas(element);
-		}
-	});
-};
-ksu.formatMoneyCommas = function(elem) {
-	var val = elem.value;
-	var parts = val.toString().split(".");
-	parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	elem.value = parts.join(".");
-};
-ksu.removeMoneyCommas = function(elem) {
-	var val = elem.value;
-	val = val.toString().replace(/,/g, "");
-	elem.value = val;
-};
 
 // Formats email address as ___@ksu.edu (text field)
 // Run inside the vm.afterLoad() block
 ksu.initEmailKSU = function() {
+	ksu.registerEmailKSU = function() {
+		[].forEach.call(document.querySelectorAll('.maskemail'), function(element) {
+			if (!element.getAttribute('sd-email-listener')) {
+				element.addEventListener('focusout', function() { formatEmailKSU(this); }, false);
+			}
+		});
+	};
+	ksu.formatEmailKSU = function(elem) {
+		var val = elem.value;
+		if (val == null || val.toString() == "") { return; }
+		var parts = val.toString().split('@');
+		if (parts.length == 1 || parts[1].toString() == 'k-state.edu') {
+			elem.value = parts[0] + "@ksu.edu";
+		}
+	};
+
 	[].forEach.call(document.querySelectorAll('button'), function(element) {
 		if (!element.getAttribute('sd-email-listener')) {
 			console.log('initEmailKSU: ' + element.getAttribute('id'));
@@ -67,21 +83,6 @@ ksu.initEmailKSU = function() {
 		}
 	});
 	this.registerEmailKSU();
-};
-ksu.registerEmailKSU = function() {
-	[].forEach.call(document.querySelectorAll('.maskemail'), function(element) {
-		if (!element.getAttribute('sd-email-listener')) {
-			element.addEventListener('focusout', function() { formatEmailKSU(this); }, false);
-		}
-	});
-};
-ksu.formatEmailKSU = function(elem) {
-	var val = elem.value;
-	if (val == null || val.toString() == "") { return; }
-	var parts = val.toString().split('@');
-	if (parts.length == 1 || parts[1].toString() == 'k-state.edu') {
-		elem.value = parts[0] + "@ksu.edu";
-	}
 };
 
 // Buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
