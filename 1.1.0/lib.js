@@ -1,9 +1,23 @@
 // Dane Miller, 02/16/2022
-// Version 1.1.0
+// Version 1.1.1
 // Host this .js file on GitHub.
 
 (function(ksu) {
 // BEGIN NAMESPACE
+
+
+/*** SIMPLE CONFIG AND RUN ***/
+
+// Run the selected formatting options on the form
+// Run inside the vm.afterLoad() block
+// i.e.: ksu.format(['noautocomplete', 'moneycommas', 'emailksu', 'hidedisabledbuttons']);
+ksu.format = function(p) {
+	for (var i = 0; i < p.length; i++) { p[i] = p[i].toLowerCase(); }
+	if (p.includes("noautocomplete") == true) { ksu.disableAutocomplete(); }
+	if (p.includes("moneycommas") == true) { ksu.initMoneyCommas(); }
+	if (p.includes("emailksu") == true) { ksu.initEmailKSU(); }
+	if (p.includes("hidedisabledbuttons") == true) { ksu.initHideDisabledButtons(); }
+};
 
 
 /*** FORM OPTIONS ***/
@@ -86,7 +100,7 @@ ksu.initEmailKSU = function() {
 
 // Buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
 // Run inside the vm.afterLoad() block
-ksu.initDisabledButtonsAreHidden = function() {
+ksu.initHideDisabledButtons = function() {
 	$( 'body' ).prepend('<style>button:disabled { display: none; }</style>');
 };
 
