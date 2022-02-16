@@ -40,7 +40,7 @@ ksu.triggerMoneyCommas = function(elem) {
 	this.formatMoneyCommas(elem);
 	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
 		if (element.getAttribute('data-bind').includes("money") && element.getAttribute('data-bind').includes("calculate")) {
-			this.formatMoneyCommas(element);
+			ksu.formatMoneyCommas(element);
 		}
 	});
 };
