@@ -17,10 +17,15 @@ function disableAutocomplete() {
 // Run inside the vm.afterLoad() block
 function initMoneyCommas() {
     function registerMoneyCommas() {
+		[].forEach.call(document.querySelectorAll('button'), function(element) {
+			console.log('registerMoneyCommas (button): ' + element.getAttribute('id'));
+			element.addEventListener('click', function() { registerMoneyCommas(); }, false);
+			element.setAttribute('sd-money-listener', 'yes');
+		});
     	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
 			if (element.getAttribute('data-bind').includes("money")) {
 				if (!element.getAttribute('sd-money-listener')) {
-					console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
+					console.log('registerMoneyCommas (input): ' + element.getAttribute('id'));
 					element.addEventListener('focusout', function() { triggerMoneyCommas(this); }, false);
 					element.addEventListener('focus', function() { removeMoneyCommas(this); }, false);
 					element.setAttribute('sd-money-listener', 'yes');
@@ -48,20 +53,23 @@ function initMoneyCommas() {
     	val = val.toString().replace(/,/g, "");
     	elem.value = val;
     }
-    [].forEach.call(document.querySelectorAll('button'), function(element) {
-    	console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind') && !element.getAttribute('sd-money-listener'));
-    	element.addEventListener('click', function() { registerMoneyCommas(); }, false);
-		element.setAttribute('sd-money-listener', 'yes');
-    });
     registerMoneyCommas();
 }
 
-// Formats email address as ___@ksu.edu (text field)
+// Formats email address fiels with the "maskemail" class as ___@ksu.edu (text field)
 // Run inside the vm.afterLoad() block
 function initEmailKSU() {
 	function registerEmailKSU() {
+		[].forEach.call(document.querySelectorAll('button'), function(element) {
+			if (!element.getAttribute('sd-email-listener')) {
+				console.log('registerEmailKSU (button): ' + element.getAttribute('id'));
+				element.addEventListener('click', function() { registerEmailKSU(); }, false);
+				element.setAttribute('sd-email-listener', 'yes');
+			}
+		});
 		[].forEach.call(document.querySelectorAll('.maskemail'), function(element) {
 			if (!element.getAttribute('sd-email-listener')) {
+				console.log('registerEmailKSU (input): ' + element.getAttribute('id'));
 				element.addEventListener('focusout', function() { formatEmailKSU(this); }, false);
 			}
 			formatEmailKSU(element);
@@ -75,13 +83,6 @@ function initEmailKSU() {
 			elem.value = parts[0] + "@ksu.edu";
 		}
 	}
-	[].forEach.call(document.querySelectorAll('button'), function(element) {
-		if (!element.getAttribute('sd-email-listener')) {
-			console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
-			element.addEventListener('click', function() { registerEmailKSU(); }, false);
-			element.setAttribute('sd-email-listener', 'yes');
-		}
-	});
 	registerEmailKSU();
 }
 
