@@ -1,5 +1,5 @@
-// Dane Miller, 02/16/2022
-// Version 1.0.3
+// Dane Miller, 02/17/2022
+// Version 1.0.4
 // Host this .js file on GitHub.
 
 
@@ -18,11 +18,14 @@ function disableAutocomplete() {
 function initMoneyCommas() {
     function registerMoneyCommas() {
     	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
-			if (element.getAttribute('data-bind').includes("money") && !element.getAttribute('sd-money-listener')) {
-				console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
-    			element.addEventListener('focusout', function() { triggerMoneyCommas(this); }, false);
-				element.addEventListener('focus', function() { removeMoneyCommas(this); }, false);
-				element.setAttribute('sd-money-listener', 'yes');
+			if (element.getAttribute('data-bind').includes("money")) {
+				if (!element.getAttribute('sd-money-listener')) {
+					console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
+					element.addEventListener('focusout', function() { triggerMoneyCommas(this); }, false);
+					element.addEventListener('focus', function() { removeMoneyCommas(this); }, false);
+					element.setAttribute('sd-money-listener', 'yes');
+				}
+				formatMoneyCommas(element);
     		}
     	});
     }
@@ -61,6 +64,7 @@ function initEmailKSU() {
 			if (!element.getAttribute('sd-email-listener')) {
 				element.addEventListener('focusout', function() { formatEmailKSU(this); }, false);
 			}
+			formatEmailKSU(element);
 		});
 	}
 	function formatEmailKSU(elem) {

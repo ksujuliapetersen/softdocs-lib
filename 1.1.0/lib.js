@@ -1,5 +1,5 @@
-// Dane Miller, 02/16/2022
-// Version 1.1.1
+// Dane Miller, 02/17/2022
+// Version 1.1.2
 // Host this .js file on GitHub.
 
 (function(ksu) {
@@ -36,11 +36,14 @@ ksu.disableAutocomplete = function() {
 ksu.initMoneyCommas = function() {
 	ksu.registerMoneyCommas = function() {
 		[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
-			if (element.getAttribute('data-bind').includes("money") && !element.getAttribute('sd-money-listener')) {
-				console.log('registerMoneyCommas: ' + element.getAttribute('id'));
-				element.addEventListener('focusout', function() { ksu.triggerMoneyCommas(this); }, false);
-				element.addEventListener('focus', function() { ksu.removeMoneyCommas(this); }, false);
-				element.setAttribute('sd-money-listener', 'yes');
+			if (element.getAttribute('data-bind').includes("money")) {
+				if (!element.getAttribute('sd-money-listener')) {
+					console.log('registerMoneyCommas: ' + element.getAttribute('id'));
+					element.addEventListener('focusout', function() { ksu.triggerMoneyCommas(this); }, false);
+					element.addEventListener('focus', function() { ksu.removeMoneyCommas(this); }, false);
+					element.setAttribute('sd-money-listener', 'yes');
+				}
+				ksu.formatMoneyCommas(element);
 			}
 		});
 	};
@@ -79,6 +82,7 @@ ksu.initEmailKSU = function() {
 			if (!element.getAttribute('sd-email-listener')) {
 				element.addEventListener('focusout', function() { ksu.formatEmailKSU(this); }, false);
 			}
+			ksu.formatEmailKSU(element);
 		});
 	};
 	ksu.formatEmailKSU = function(elem) {
