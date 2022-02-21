@@ -16,7 +16,7 @@ To add this function library to your form, add the following line to the "define
 Use the selected formatting options on the form
 > Run inside the vm.afterLoad() block
 ```
-ksu.format(['noautocomplete', 'moneycommas', 'emailksu', 'hidedisabledbuttons']);
+ksu.format(['noautocomplete', 'moneycommas', 'emailksu', 'hidedisabledbuttons', 'dropdownarrows']);
 ```
 
 **noautocomplete** prevents form suggestion
@@ -26,6 +26,8 @@ ksu.format(['noautocomplete', 'moneycommas', 'emailksu', 'hidedisabledbuttons'])
 **emailksu** formats email address fields (text) marked with a "maskemail" class as eid@ksu.edu
 
 **hidedisabledbuttons** buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
+
+**dropdownarrows** add drop-down arrows to input fields with an autocomplete data-bind
 
 ### LOADING MESSAGE
 

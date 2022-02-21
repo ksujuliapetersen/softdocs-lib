@@ -10,7 +10,7 @@
 
 // Run the selected formatting options on the form
 // Run inside the vm.afterLoad() block
-// i.e.: ksu.format(['noautocomplete', 'moneycommas', 'emailksu', 'hidedisabledbuttons']);
+// i.e.: ksu.format(['noautocomplete', 'moneycommas', 'emailksu', 'hidedisabledbuttons', 'dropdownarrows']);
 ksu.format = function(p) {
 	if (p === undefined) { p = []; }
 	for (var i = 0; i < p.length; i++) { p[i] = p[i].toLowerCase(); }
@@ -18,6 +18,7 @@ ksu.format = function(p) {
 	if (p.includes("moneycommas") == true) { ksu.initMoneyCommas(); }
 	if (p.includes("emailksu") == true) { ksu.initEmailKSU(); }
 	if (p.includes("hidedisabledbuttons") == true) { ksu.initHideDisabledButtons(); }
+	if (p.includes("dropdownarrows") == true) { ksu.initDropdownArrows(); }
 };
 
 
@@ -104,6 +105,23 @@ ksu.initEmailKSU = function() {
 		}
 	};
 	ksu.registerEmailKSU();
+};
+
+ksu.initDropdownArrows = function() {
+	[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input'), function(element) {
+		console.log('ksu.registerAutocompleteArrow (input): ' + element.getAttribute('id'));
+		$(element).after(
+			$("<div>", {
+				text: "▼",
+				style: "display: inline-block; border: 1px solid gray; border-radius: 2px; text-align: center; padding: 1px 2px; width: 30px; height: 29px; position: relative; top: 0px; left: -1px;"
+			}).on("click", function() {
+				element.focus();
+				return false;
+			})
+		);
+		$(element).css("display", "inline-block");
+		$(element).css("width", "calc(100% - 30px)");
+	});
 };
 
 // Buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
