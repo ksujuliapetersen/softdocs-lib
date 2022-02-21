@@ -113,14 +113,13 @@ ksu.initDropdownArrows = function() {
 		$(element).after(
 			$("<div>", {
 				text: "▼",
-				style: "display: inline-block; border: 1px solid gray; border-radius: 2px; text-align: center; padding: 1px 2px; width: 30px; height: 29px; position: relative; top: 0px; left: -1px;"
+				style: "display: inline-block; text-align: right; width: 20px; height: 29px; padding: 2px 2px; position: absolute; right: 0; bottom: 0;"
 			}).on("click", function() {
 				element.focus();
 				return false;
 			})
 		);
-		$(element).css("display", "inline-block");
-		$(element).css("width", "calc(100% - 30px)");
+		$(element).parent().css("position", "relative");
 	});
 };
 
