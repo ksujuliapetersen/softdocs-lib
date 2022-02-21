@@ -107,6 +107,13 @@ ksu.initEmailKSU = function() {
 	ksu.registerEmailKSU();
 };
 
+// Buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
+// Run inside the vm.afterLoad() block
+ksu.initHideDisabledButtons = function() {
+	$( 'body' ).prepend('<style>button:disabled { display: none; }</style>');
+};
+
+// Add drop-down arrows to input fields with an autocomplete data-bind
 ksu.initDropdownArrows = function() {
 	[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input'), function(element) {
 		console.log('ksu.registerAutocompleteArrow (input): ' + element.getAttribute('id'));
@@ -121,12 +128,6 @@ ksu.initDropdownArrows = function() {
 		);
 		$(element).parent().css("position", "relative");
 	});
-};
-
-// Buttons will automatically become hidden when disabled, and then automatically become visible again when they are enabled
-// Run inside the vm.afterLoad() block
-ksu.initHideDisabledButtons = function() {
-	$( 'body' ).prepend('<style>button:disabled { display: none; }</style>');
 };
 
 
