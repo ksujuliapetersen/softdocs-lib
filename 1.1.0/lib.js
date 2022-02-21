@@ -116,11 +116,11 @@ ksu.initHideDisabledButtons = function() {
 // Add drop-down arrows to input fields with an autocomplete data-bind
 ksu.initDropdownArrows = function() {
 	[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input'), function(element) {
-		console.log('ksu.registerAutocompleteArrow (input): ' + element.getAttribute('id'));
+		console.log('ksu.initDropdownArrows (input): ' + element.getAttribute('id'));
 		$(element).after(
 			$("<div>", {
-				text: "▼",
-				style: "display: inline-block; text-align: right; width: 20px; height: 29px; padding: 2px 2px; position: absolute; right: 0; bottom: 0;"
+				text: " ",
+				style: "display: inline-block; width: 0; height: 0; position: absolute; right: 5px; bottom: calc(25% - 3px); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000;"
 			}).on("click", function() {
 				element.focus();
 				return false;
