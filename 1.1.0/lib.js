@@ -90,6 +90,7 @@ ksu.initEmailKSU = function() {
 			if (!element.getAttribute('sd-email-listener')) {
 				console.log('ksu.registerEmailKSU (input): ' + element.getAttribute('id'));
 				element.addEventListener('focusout', function() { ksu.formatEmailKSU(this); }, false);
+				element.setAttribute('sd-email-listener', 'yes');
 			}
 			ksu.formatEmailKSU(element);
 		});
