@@ -136,7 +136,7 @@ ksu.initDropdownArrows = function() {
 				element.setAttribute('sd-dropdownarrows-listener', 'yes');
 			}
 		});
-		[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input'), function(element) {
+		[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input, input[data-bind*="datepicker"]'), function(element) {
 			insertDropdownArrow(element, 5);
 		});
 		[].forEach.call(document.querySelectorAll('select'), function(element) {
