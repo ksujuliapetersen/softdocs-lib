@@ -121,22 +121,19 @@ ksu.initDropdownArrows = function() {
 				element.setAttribute('sd-dropdownarrows-listener', 'yes');
 			}
 		});
-		[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input'), function(element) {
-			ksu.insertDropdownArrow(element);
+		[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input, select'), function(element) {
+			if (!element.getAttribute('sd-dropdownarrows-listener')) {
+				console.log('ksu.registerDropdownArrows (input): ' + element.getAttribute('id'));
+				$(element).parent().css("position", "relative");
+				$(element).after(
+					$("<div>", {
+						text: " ",
+						style: "display: inline-block; width: 0; height: 0; position: absolute; right: 8px; bottom: calc(25% - 2px); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000; pointer-events: none;"
+					})
+				);
+				element.setAttribute('sd-dropdownarrows-listener', 'yes');
+			}
 		});
-		[].forEach.call(document.querySelectorAll('select'), function(element) {
-			ksu.insertDropdownArrow(element);
-		});
-	};
-	ksu.insertDropdownArrow = function(element) {
-		console.log('ksu.insertDropdownArrow (input): ' + element.getAttribute('id'));
-		$(element).parent().css("position", "relative");
-		$(element).after(
-			$("<div>", {
-				text: " ",
-				style: "display: inline-block; width: 0; height: 0; position: absolute; right: 8px; bottom: calc(25% - 2px); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000; pointer-events: none;"
-			})
-		);
 	};
 	ksu.registerDropdownArrows();
 };
