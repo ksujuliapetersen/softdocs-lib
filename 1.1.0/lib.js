@@ -1,5 +1,5 @@
-// Dane Miller, 02/21/2022
-// Version 1.1.3
+// Dane Miller, 02/22/2022
+// Version 1.1.4
 // Host this .js file on GitHub.
 
 (function(ksu) {
@@ -43,22 +43,20 @@ ksu.initMoneyCommas = function() {
 				element.setAttribute('sd-money-listener', 'yes');
 			}
 		});
-		[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
-			if (element.getAttribute('data-bind').includes("money")) {
-				if (!element.getAttribute('sd-money-listener')) {
-					console.log('ksu.registerMoneyCommas (input): ' + element.getAttribute('id'));
-					element.addEventListener('focusout', function() { ksu.triggerMoneyCommas(this); }, false);
-					element.addEventListener('focus', function() { ksu.removeMoneyCommas(this); }, false);
-					element.setAttribute('sd-money-listener', 'yes');
-				}
-				ksu.formatMoneyCommas(element);
+		[].forEach.call(document.querySelectorAll('input[data-bind*="money"]'), function(element) {
+			if (!element.getAttribute('sd-money-listener')) {
+				console.log('ksu.registerMoneyCommas (input): ' + element.getAttribute('id'));
+				element.addEventListener('focusout', function() { ksu.triggerMoneyCommas(this); }, false);
+				element.addEventListener('focus', function() { ksu.removeMoneyCommas(this); }, false);
+				element.setAttribute('sd-money-listener', 'yes');
 			}
+			ksu.formatMoneyCommas(element);
 		});
 	};
 	ksu.triggerMoneyCommas = function(elem) {
 		ksu.formatMoneyCommas(elem);
-		[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
-			if (element.getAttribute('data-bind').includes("money") && element.getAttribute('data-bind').includes("calculate")) {
+		[].forEach.call(document.querySelectorAll('input[data-bind*="money"]'), function(element) {
+			if (element.getAttribute('data-bind').includes("calculate")) {
 				ksu.formatMoneyCommas(element);
 			}
 		});
@@ -116,18 +114,21 @@ ksu.initHideDisabledButtons = function() {
 // Add drop-down arrows to input fields with an autocomplete data-bind
 ksu.initDropdownArrows = function() {
 	[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input'), function(element) {
-		console.log('ksu.initDropdownArrows (input): ' + element.getAttribute('id'));
-		$(element).after(
-			$("<div>", {
-				text: " ",
-				style: "display: inline-block; width: 0; height: 0; position: absolute; right: 5px; bottom: calc(25% - 3px); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000;"
-			}).on("click", function() {
-				element.focus();
-				return false;
-			})
-		);
-		$(element).parent().css("position", "relative");
+		insertDropdownArrow(element);
 	});
+	[].forEach.call(document.querySelectorAll('select'), function(element) {
+		insertDropdownArrow(element);
+	});
+};
+var insertDropdownArrow = function(element) {
+	console.log('ksu.initDropdownArrows (input): ' + element.getAttribute('id'));
+	$(element).parent().css("position", "relative");
+	$(element).after(
+		$("<div>", {
+			text: " ",
+			style: "display: inline-block; width: 0; height: 0; position: absolute; right: 8px; bottom: calc(25% - 2px); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000; pointer-events: none;"
+		})
+	);
 };
 
 
