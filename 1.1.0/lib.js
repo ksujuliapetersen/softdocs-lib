@@ -114,6 +114,20 @@ ksu.initHideDisabledButtons = function() {
 // Add drop-down arrows to input fields with an autocomplete data-bind
 ksu.initDropdownArrows = function() {
 	ksu.registerDropdownArrows = function() {
+		var insertDropdownArrow = function(element, r) {
+			if (!element.getAttribute('sd-dropdownarrows-listener')) {
+				console.log('ksu.registerDropdownArrows (input): ' + element.getAttribute('id'));
+				var b = ($(element).outerHeight() - $(element).height()) + ($(element).height()/2) - 9;
+				$(element).parent().css("position", "relative");
+				$(element).after(
+					$("<div>", {
+						text: " ",
+						style: "display: inline-block; width: 0; height: 0; position: absolute; right: " + r + "px; bottom: " + b + "px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000; pointer-events: none;"
+					})
+				);
+				element.setAttribute('sd-dropdownarrows-listener', 'yes');
+			}
+		};
 		[].forEach.call(document.querySelectorAll('button'), function(element) {
 			if (!element.getAttribute('sd-dropdownarrows-listener')) {
 				console.log('ksu.registerDropdownArrows (button): ' + element.getAttribute('id'));
@@ -121,18 +135,11 @@ ksu.initDropdownArrows = function() {
 				element.setAttribute('sd-dropdownarrows-listener', 'yes');
 			}
 		});
-		[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input, select'), function(element) {
-			if (!element.getAttribute('sd-dropdownarrows-listener')) {
-				console.log('ksu.registerDropdownArrows (input): ' + element.getAttribute('id'));
-				$(element).parent().css("position", "relative");
-				$(element).after(
-					$("<div>", {
-						text: " ",
-						style: "display: inline-block; width: 0; height: 0; position: absolute; right: 8px; bottom: calc(25% - 2px); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000; pointer-events: none;"
-					})
-				);
-				element.setAttribute('sd-dropdownarrows-listener', 'yes');
-			}
+		[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input'), function(element) {
+			insertDropdownArrow(element, 5);
+		});
+		[].forEach.call(document.querySelectorAll('select'), function(element) {
+			insertDropdownArrow(element, 8);
 		});
 	};
 	ksu.registerDropdownArrows();
