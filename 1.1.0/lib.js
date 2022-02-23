@@ -1,5 +1,5 @@
-// Dane Miller, 02/22/2022
-// Version 1.1.4
+// Dane Miller, 02/23/2022
+// Version 1.1.5
 // Host this .js file on GitHub.
 
 (function(ksu) {
@@ -115,15 +115,22 @@ ksu.initHideDisabledButtons = function() {
 // Add drop-down arrows to input fields with an autocomplete data-bind
 ksu.initDropdownArrows = function() {
 	ksu.registerDropdownArrows = function() {
-		var insertDropdownArrow = function(element, r) {
+		var insertDropdownArrow = function(element, c, x) {
 			if (!element.getAttribute('sd-dropdownarrows-listener')) {
 				console.log('ksu.registerDropdownArrows (input): ' + element.getAttribute('id'));
-				var b = ($(element).outerHeight() - $(element).height()) + ($(element).height()/2) - 9;
+				var s;
+				if (c == false) {
+					var y = ($(element).outerHeight() - $(element).height()) + ($(element).height()/2) - 9;
+					s = "display: inline-block; width: 0; height: 0; position: absolute; right: " + x + "px; bottom: " + y + "px; pointer-events: none; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000;";
+				} else {
+					var h = $(element).outerHeight() - (x * 2);
+					s = "display: inline-block; width: " + h + "px; height: " + h + "px; position: absolute; right: " + x + "px; bottom: " + x + "px; pointer-events: none; background-image: url('https://kstateome.github.io/softdocs-lib/1.1.0/ico/calendar.ico'); background-size: " + h + "px " + h + "px; background-repeat: no-repeat;";
+				}
 				$(element).parent().css("position", "relative");
 				$(element).after(
 					$("<div>", {
 						text: " ",
-						style: "display: inline-block; width: 0; height: 0; position: absolute; right: " + r + "px; bottom: " + b + "px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000; pointer-events: none;"
+						style: s
 					})
 				);
 				element.setAttribute('sd-dropdownarrows-listener', 'yes');
@@ -136,11 +143,14 @@ ksu.initDropdownArrows = function() {
 				element.setAttribute('sd-dropdownarrows-listener', 'yes');
 			}
 		});
-		[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input, input[data-bind*="datepicker"]'), function(element) {
-			insertDropdownArrow(element, 5);
+		[].forEach.call(document.querySelectorAll('input.ui-autocomplete-input'), function(element) {
+			insertDropdownArrow(element, false, 5);
 		});
 		[].forEach.call(document.querySelectorAll('select'), function(element) {
-			insertDropdownArrow(element, 8);
+			insertDropdownArrow(element, false, 8);
+		});
+		[].forEach.call(document.querySelectorAll('input[data-bind*="datepicker"]'), function(element) {
+			insertDropdownArrow(element, true, 3);
 		});
 	};
 	ksu.registerDropdownArrows();
