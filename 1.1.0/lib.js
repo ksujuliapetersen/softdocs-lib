@@ -1,5 +1,5 @@
-// Dane Miller, 02/23/2022
-// Version 1.1.5
+// Dane Miller, 03/11/2022
+// Version 1.1.6
 // Host this .js file on GitHub.
 
 (function(ksu) {
@@ -122,7 +122,7 @@ ksu.initDropdownArrows = function() {
 				if (c == false) {
 					y = $(element).position().top + ($(element).outerHeight() - $(element).height()) + ($(element).height()/2) - 8;
         			x = 7 + $(element).position().left + $(element).width();
-					s = "display: inline-block; width: 0; height: 0; position: absolute; right: " + x + "px; bottom: " + y + "px; pointer-events: none; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000;";
+					s = "display: inline-block; width: 0; height: 0; position: absolute; left: " + x + "px; top: " + y + "px; pointer-events: none; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000;";
 				} else {
 					y = 3 + ($(element).parent().outerHeight() - $(element).parent().height())/2;
 					x = 3 + ($(element).parent().outerWidth() - $(element).parent().width())/2;
