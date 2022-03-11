@@ -1,5 +1,5 @@
 // Dane Miller, 03/11/2022
-// Version 1.1.6
+// Version 1.1.7
 // Host this .js file on GitHub.
 
 (function(ksu) {
@@ -118,24 +118,18 @@ ksu.initDropdownArrows = function() {
 		var insertDropdownArrow = function(element, c) {
 			if (!element.getAttribute('sd-dropdownarrows-listener')) {
 				console.log('ksu.registerDropdownArrows (input): ' + element.getAttribute('id'));
-				var x, y, h, s;
-				if (c == false) {
-					y = $(element).position().top + ($(element).outerHeight() - $(element).height()) + ($(element).height()/2) - 8;
-        			x = 7 + $(element).position().left + $(element).width();
-					s = "display: inline-block; width: 0; height: 0; position: absolute; left: " + x + "px; top: " + y + "px; pointer-events: none; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000;";
+				var ico;
+				if (c == true) {
+					ico = "calendar.ico";
 				} else {
-					y = 3 + ($(element).parent().outerHeight() - $(element).parent().height())/2;
-					x = 3 + ($(element).parent().outerWidth() - $(element).parent().width())/2;
-					h = $(element).outerHeight() - (6);
-					s = "display: inline-block; width: " + h + "px; height: " + h + "px; position: absolute; right: " + x + "px; bottom: " + y + "px; pointer-events: none; background-image: url('https://kstateome.github.io/softdocs-lib/1.1.0/ico/calendar.ico'); background-size: " + h + "px " + h + "px; background-repeat: no-repeat;";
+					ico = "dropdown.ico";
 				}
-				$(element).parent().css("position", "relative");
-				$(element).after(
-					$("<div>", {
-						text: " ",
-						style: s
-					})
-				);
+				$(element).css({
+					"background-image": "url('https://kstateome.github.io/softdocs-lib/1.1.0/ico/" + ico + "')",
+					"background-size": "" + ($(element).outerHeight() - 6) + "px",
+					"background-position": "calc(100% - 2px) center",
+					"background-repeat": "no-repeat"
+				});
 				element.setAttribute('sd-dropdownarrows-listener', 'yes');
 			}
 		};
