@@ -120,8 +120,8 @@ ksu.initDropdownArrows = function() {
 				console.log('ksu.registerDropdownArrows (input): ' + element.getAttribute('id'));
 				var x, y, h, s;
 				if (c == false) {
-					y = ($(element).parent().outerHeight() - $(element).parent().height())/2 + ($(element).outerHeight() - $(element).height()) + ($(element).height()/2) - 9;
-					x = 5 + ($(element).parent().outerWidth() - $(element).parent().width())/2;
+					y = $(element).position().top + ($(element).outerHeight() - $(element).height()) + ($(element).height()/2) - 8;
+        			x = 7 + $(element).position().left + $(element).width();
 					s = "display: inline-block; width: 0; height: 0; position: absolute; right: " + x + "px; bottom: " + y + "px; pointer-events: none; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #000;";
 				} else {
 					y = 3 + ($(element).parent().outerHeight() - $(element).parent().height())/2;
