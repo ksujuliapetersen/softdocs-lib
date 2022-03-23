@@ -1,5 +1,5 @@
 // Dane Miller, 03/11/2022
-// Version 1.1.7
+// Version 1.1.8
 // Host this .js file on GitHub.
 
 (function(ksu) {
@@ -160,7 +160,7 @@ ksu.initDropdownArrows = function() {
 // Run inside the vm.viewmodel() block
 ksu.showFormLoadingMessage = function() {
 	if ($( '#softdocsFormLoadingMessage' ).length == 0) {
-		$( 'body' ).prepend('<div id="softdocsFormLoadingMessage" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 999;"><div style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: white; opacity: 0.8;"></div><div style="display: block; position: fixed; width: 80%; height: 220px; text-align: center; margin: 10%; font-size: 26px; font-weight: bold; padding: 20px; background: white; box-shadow: 0 0 30px grey;"><div>Loading...</div><div style="width: 100px; margin: 10px 0 0 calc(50% - 50px);"><object type="image/svg+xml" data="/dist/resources/images/svg/Loading.svg">...</object></div></div></div>');
+		$( 'body' ).prepend('<div id="softdocsFormLoadingMessage" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 999;"><div style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: white; opacity: 0.8;"></div><div style="display: block; position: fixed; width: 80%; height: 220px; text-align: center; margin: 10%; font-size: 26px; font-weight: bold; padding: 20px; background: white; box-shadow: 0 0 30px grey;"><div>Loading...</div><div style="width: 100px; margin: 10px 0 0 calc(50% - 50px);"><svg width="100" height="100"><image xlink:href="/dist/resources/images/svg/Loading.svg" src="/dist/resources/images/svg/Loading.svg" width="100" height="100"/></div></div></div>');
 	}
 };
 
