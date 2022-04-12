@@ -179,6 +179,8 @@ ksu.hideFormLoadingMessage = function() {
 ksu.setInputValue = function(id, value) {
 	document.getElementById(id).value = value;
 	ksu.triggerEvent(document.getElementById(id), "change");
+	if (element.getAttribute('sd-money-listener')) { ksu.initMoneyCommas(); }
+	if (element.getAttribute('sd-email-listener')) { ksu.initEmailKSU(); }
 };
 
 ksu.triggerEvent = function(element, eventName) {
