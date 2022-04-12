@@ -178,7 +178,7 @@ ksu.hideFormLoadingMessage = function() {
 // Changing the value of an input via document.getElementById("id").value = "value" only changes the display and not the actual value that will be submitted by the form
 ksu.setInputValue = function(id, value) {
 	document.getElementById(id).value = value;
-	triggerEvent(document.getElementById(id), "change");
+	ksu.triggerEvent(document.getElementById(id), "change");
 };
 
 ksu.triggerEvent = function(element, eventName) {
