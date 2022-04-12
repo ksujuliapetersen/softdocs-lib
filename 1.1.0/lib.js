@@ -100,7 +100,7 @@ ksu.initEmailKSU = function() {
 		if (val == null || val.toString() == "") { return; }
 		var parts = val.toString().split('@');
 		if (parts.length == 1 || parts[1].toString() == 'k-state.edu') {
-			vm[elem.id](parts[0] + "@ksu.edu");
+			ksu.setInputValue(elem.id, parts[0] + "@ksu.edu");
 		}
 	};
 	ksu.registerEmailKSU();
@@ -177,7 +177,23 @@ ksu.hideFormLoadingMessage = function() {
 
 // Changing the value of an input via document.getElementById("id").value = "value" only changes the display and not the actual value that will be submitted by the form
 ksu.setInputValue = function(id, value) {
-	vm[id](value);
+	document.getElementById(id).value = value;
+	triggerEvent(document.getElementById(id), "change");
+};
+
+ksu.triggerEvent = function(element, eventName) {
+	var event; // The custom event that will be created
+	if(document.createEvent){
+		event = document.createEvent("HTMLEvents");
+		event.initEvent(eventName, true, true);
+		event.eventName = eventName;
+		element.dispatchEvent(event);
+	} else {
+		event = document.createEventObject();
+		event.eventName = eventName;
+		event.eventType = eventName;
+		element.fireEvent("on" + event.eventType, event);
+	}
 };
 
 
