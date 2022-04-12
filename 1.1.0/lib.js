@@ -1,5 +1,5 @@
-// Dane Miller, 03/11/2022
-// Version 1.1.8
+// Dane Miller, 04/12/2022
+// Version 1.1.9
 // Host this .js file on GitHub.
 
 (function(ksu) {
@@ -100,7 +100,7 @@ ksu.initEmailKSU = function() {
 		if (val == null || val.toString() == "") { return; }
 		var parts = val.toString().split('@');
 		if (parts.length == 1 || parts[1].toString() == 'k-state.edu') {
-			elem.value = parts[0] + "@ksu.edu";
+			vm[elem.id](parts[0] + "@ksu.edu");
 		}
 	};
 	ksu.registerEmailKSU();
@@ -170,6 +170,14 @@ ksu.hideFormLoadingMessage = function() {
 	if ($( '#softdocsFormLoadingMessage' ).length > 0) {
 		$( '#softdocsFormLoadingMessage' ).remove();
 	}
+};
+
+
+/*** FORM FUNCTIONS ***/
+
+// Changing the value of an input via document.getElementById("id").value = "value" only changes the display and not the actual value that will be submitted by the form
+ksu.setInputValue = function(id, value) {
+	vm[id](value);
 };
 
 
