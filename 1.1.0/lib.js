@@ -177,8 +177,9 @@ ksu.hideFormLoadingMessage = function() {
 
 // Changing the value of an input via document.getElementById("id").value = "value" only changes the display and not the actual value that will be submitted by the form
 ksu.setInputValue = function(id, value) {
-	document.getElementById(id).value = value;
-	ksu.triggerEvent(document.getElementById(id), "change");
+	var element = document.getElementById(id);
+	element.value = value;
+	ksu.triggerEvent(element, "change");
 	if (element.getAttribute('sd-money-listener')) { ksu.initMoneyCommas(); }
 	if (element.getAttribute('sd-email-listener')) { ksu.initEmailKSU(); }
 };
